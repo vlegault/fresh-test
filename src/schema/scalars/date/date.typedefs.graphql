@@ -1,0 +1,12 @@
+"""
+A date string, such as 2007-12-03
+"""
+scalar Date
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z
+"""
+scalar DateTime
+"""
+A time string at UTC, such as 10:15:30
+"""
+scalar Time

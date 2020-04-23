@@ -1,0 +1,51 @@
+type Query {
+	"""
+	Gets User's joined forum list
+	"""
+	getMyJoinedForumList: [Forum!]!
+	"""
+	Gets the list of Forums the User hasn't joined yet
+	Forums' Users & Messages won't be accessible since the User hasn't joined these Forums yet
+	"""
+	getAvailableForumList: [Forum!]!
+}
+
+type Mutation {
+	"""
+	Creates a new Forum and automatically add the User in it
+	"""
+	createForum(
+		"""
+		New Forum name
+		"""
+		name: String!
+	): Forum!
+	"""
+	Enables the User to join a Forum
+	"""
+	joinForum(
+		"""
+		Id of the Forum to join
+		"""
+		forumId: String!
+	): Forum!
+}
+
+type Forum {
+	"""
+	Forum's ID
+	"""
+	id: String!
+	"""
+	Forum's name
+	"""
+	name: String!
+	"""
+	List of Forum's Messages
+	"""
+	messages: [Message!]
+	"""
+	List of Forum's Users
+	"""
+	users: [User!]
+}

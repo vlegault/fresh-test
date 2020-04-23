@@ -1,22 +1,20 @@
 import express from 'express';
-import {ApolloServer, gql} from 'apollo-server-express';
+import {ApolloServer} from 'apollo-server-express';
+import {typeDefs, resolvers} from '~schema';
+import {LOGGED_USER_ID} from '~utils/db';
 
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
-`;
-
-const resolvers = {
-	Query: {
-		hello: () => 'Hello world!'
+const server = new ApolloServer({
+	typeDefs,
+	resolvers,
+	context: async () => {
+		return {
+			// For test purposes, always return fake Logged User ID in the context
+			userId: LOGGED_USER_ID
+		};
 	}
-};
-
-const server = new ApolloServer({typeDefs, resolvers});
-
+});
 const app = express();
-server.applyMiddleware({app});
+server.applyMiddleware({app, path: '/'});
 app.listen({port: 4000}, () =>
-	console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
+	console.log(`Fresh Test server running at http://localhost:4000${server.graphqlPath}`)
 );

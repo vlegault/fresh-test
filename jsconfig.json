@@ -1,0 +1,16 @@
+{
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"~schema/*": [
+				"src/schema/*"
+			],
+			"~utils/*": [
+				"src/utils/*"
+			]
+		}
+	},
+  "exclude": [
+    "node_modules"
+  ]
+}

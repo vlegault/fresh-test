@@ -1,0 +1,38 @@
+type Mutation {
+	"""
+	Posts a new message in a Forum
+	"""
+	postMessage(
+		"""
+		Forum ID
+		"""
+		forumId: String!
+		"""
+		Message payload
+		"""
+		payload: String!
+	): Message!
+}
+
+type Message {
+	"""
+	Message's ID
+	"""
+	id: String!
+	"""
+	Message's Forum
+	"""
+	forum: Forum!
+	"""
+	Message's author
+	"""
+	author: User!
+	"""
+	Message's payload
+	"""
+	payload: String!
+	"""
+	Message's timestamp
+	"""
+	timestamp: DateTime!
+}
