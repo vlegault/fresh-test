@@ -29,7 +29,7 @@
 		"xo": "^0.28.3"
 	},
 	"scripts": {
-		"start": "NODE_ENV=development yarn build && SENTRY_LOG_OFF=1 nodemon --http-parser=legacy src/index.js",
+		"start": "NODE_ENV=development yarn build && nodemon --http-parser=legacy src/index.js",
 		"clean": "rm -rf build",
 		"build": "yarn clean && babel src -d build && cpx \"src/**/*.graphql\" build"
 	},
